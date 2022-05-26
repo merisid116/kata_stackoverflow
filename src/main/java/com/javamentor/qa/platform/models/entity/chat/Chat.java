@@ -48,10 +48,9 @@ public class Chat {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Chat)) return false;
         Chat chat = (Chat) o;
-        return Objects.equals(id, chat.id) && Objects.equals(title, chat.title) &&
-                Objects.equals(persistDate, chat.persistDate) && chatType == chat.chatType;
+        return Objects.equals(getId(), chat.getId()) && Objects.equals(getTitle(), chat.getTitle()) && Objects.equals(getPersistDate(), chat.getPersistDate()) && getChatType() == chat.getChatType();
     }
 
     @Override

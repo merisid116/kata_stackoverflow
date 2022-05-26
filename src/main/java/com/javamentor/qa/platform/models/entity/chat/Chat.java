@@ -50,11 +50,11 @@ public class Chat {
         if (this == o) return true;
         if (!(o instanceof Chat)) return false;
         Chat chat = (Chat) o;
-        return Objects.equals(getId(), chat.getId()) && Objects.equals(getTitle(), chat.getTitle()) && Objects.equals(getPersistDate(), chat.getPersistDate()) && getChatType() == chat.getChatType();
+        return getId().equals(chat.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, persistDate, chatType);
+        return Objects.hash(getId());
     }
 }

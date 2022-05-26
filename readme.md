@@ -28,7 +28,9 @@
 
 ![](src/main/resources/static/images/git_tutor/git_branch_create.png)
 
-3. Введите название своей новой ветки (на ваше усмотрение) и нажмите **Create**.
+3. Введите название своей новой ветки, с указанием номера таски и нажмите **Create**.
+
+![](src/main/resources/static/images/git_tutor/git_create_branch.png)
 
 ![](src/main/resources/static/images/git_tutor/git_branch_name.png)
 
@@ -55,16 +57,17 @@
 
 ### Создание merge request
 
-1. Создайте новый merge request. В качестве **Source branch** выберите свою ветку, **Target branch** - **dev**.
+1. Создайте новый merge request. Перейдите в свою таску, добавится ветка которую вы закоммитили, кликайте на неё.
+В качестве **Source branch** выберите свою ветку, **Target branch** - **dev**.
 
 ![](src/main/resources/static/images/git_tutor/git_merge_req.png)
 
-![](src/main/resources/static/images/git_tutor/git_merge_req_new.png)
-
 ![](src/main/resources/static/images/git_tutor/git_merge_req_src_trg.png)
 
+![](src/main/resources/static/images/git_tutor/git_merge_req_push.png)
+
 2. Проверьте данные, допишите комментарии при необходимости. Обратите внимание на опцию **Delete source branch when merge request is accepted**.
-Завершите создание реквеста, приложите ссылку на него в карточку таска на Trello.
+Завершите создание реквеста, переместите таску в лист **Need review**
 
 ![](src/main/resources/static/images/git_tutor/git_merge_req_final.png)
 

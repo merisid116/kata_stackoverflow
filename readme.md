@@ -407,3 +407,18 @@ User при регистрации получает все знаки лишь �
         return userSet;
     }
 ````
+
+# Как сверстать какую либо страницу
+1. Последовательно добавить в **html** 3 **js** файла:
+
+   ```
+   <script type="text/javascript" src="/js/sidebar.js"></script>
+   <script type="text/javascript" src="/js/header.js"></script>
+   <script type="text/javascript" src="/js/footer.js"></script>
+   ```
+2. Создать первый тег в body:
+   `<div class="container"></div>`
+
+Получаем:
+
+![](src/main/resources/static/images/home.PNG)

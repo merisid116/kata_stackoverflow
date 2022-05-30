@@ -1,5 +1,7 @@
 package com.javamentor.qa.platform.dao.abstracts.model;
 
+import com.javamentor.qa.platform.models.entity.user.User;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -15,4 +17,5 @@ public interface ReadOnlyDao<E, K> {
 
     boolean existsByAllIds(Collection<K> ids);
 
+    Optional<User> getByEmail(String email);
 }

@@ -1,6 +1,7 @@
 package com.javamentor.qa.platform.models.entity.question;
 
 import com.javamentor.qa.platform.exception.ConstrainException;
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -59,5 +60,18 @@ public class VoteQuestion implements Serializable {
         if (vote != 1 && vote != -1) {
             throw new ConstrainException("В сущности VoteQuestion допускается передача значения в поле vote только 1 или -1");
         }
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chat)) return false;
+        VoteQuestion voteQuestion = (VoteQuestion) o;
+        return id != null &&
+                id.equals(voteQuestion.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

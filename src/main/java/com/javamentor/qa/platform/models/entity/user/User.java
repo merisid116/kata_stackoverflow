@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity.user;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -132,13 +133,14 @@ public class User implements UserDetails {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
+        if (!(o instanceof Chat)) return false;
         User user = (User) o;
-        return getId().equals(user.getId());
+        return id != null &&
+                id.equals(user.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return getClass().hashCode();
     }
 }

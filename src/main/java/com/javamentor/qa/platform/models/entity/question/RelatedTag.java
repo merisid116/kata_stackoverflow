@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity.question;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,13 +31,14 @@ public class RelatedTag implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RelatedTag that = (RelatedTag) o;
-        return Objects.equals(id, that.id);
+        if (!(o instanceof Chat)) return false;
+        RelatedTag relatedTag = (RelatedTag) o;
+        return id != null &&
+                id.equals(relatedTag.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return getClass().hashCode();
     }
 }

@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.AllArgsConstructor;
@@ -32,4 +33,18 @@ public class BookMarks {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Question question;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chat)) return false;
+        BookMarks bookMarks = (BookMarks) o;
+        return id != null &&
+                id.equals(bookMarks.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

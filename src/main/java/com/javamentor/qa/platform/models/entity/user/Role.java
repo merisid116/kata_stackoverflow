@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity.user;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,13 +42,14 @@ public class Role implements GrantedAuthority {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Role)) return false;
+        if (!(o instanceof Chat)) return false;
         Role role = (Role) o;
-        return getId().equals(role.getId());
+        return id != null &&
+                id.equals(role.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return getClass().hashCode();
     }
 }

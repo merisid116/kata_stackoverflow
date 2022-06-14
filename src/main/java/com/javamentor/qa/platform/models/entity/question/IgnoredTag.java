@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity.question;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -34,5 +35,19 @@ public class IgnoredTag  implements Serializable {
     @Column(name = "persist_date", updatable = false)
     @Type(type = "org.hibernate.type.LocalDateTimeType")
     private LocalDateTime persistDateTime;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chat)) return false;
+        IgnoredTag ign = (IgnoredTag) o;
+        return id != null &&
+                id.equals(ign.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }

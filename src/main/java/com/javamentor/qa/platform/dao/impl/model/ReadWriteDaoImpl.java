@@ -16,14 +16,6 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private final Class<E> clazz;
-
-    @SuppressWarnings("unchecked")
-    public ReadWriteDaoImpl() {
-        this.clazz = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-    }
-
-
     public void persist(E e) {
         entityManager.persist(e);
     }
@@ -36,12 +28,25 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
         entityManager.remove(e);
     }
 
+
+    public void deleteById(K id) {
+        Class<E> clazz = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
+                .getActualTypeArguments()[0];
+        String hql = "DELETE " + clazz.getName() + " WHERE id = :id";
+        entityManager.createQuery(hql).setParameter("id", id).executeUpdate();
+    }
+
     public void persistAll(E... entities) {
         int i = 0;
-        for (E e : entities) {
-            entityManager.persist(e);
+
+        for (E entity : entities) {
+            entityManager.persist(entity);
+
             i++;
+
+            // Flush a batch of inserts and release memory
             if (i % batchSize == 0 && i > 0) {
+
                 entityManager.flush();
                 entityManager.clear();
                 i = 0;
@@ -51,13 +56,20 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
             entityManager.flush();
             entityManager.clear();
         }
+
     }
+
     public void persistAll(Collection<E> entities) {
         int i = 0;
-        for (E e : entities) {
-            entityManager.persist(e);
+
+        for (E entity : entities) {
+            entityManager.persist(entity);
+
             i++;
+
+            // Flush a batch of inserts and release memory
             if (i % batchSize == 0 && i > 0) {
+
                 entityManager.flush();
                 entityManager.clear();
                 i = 0;
@@ -69,29 +81,25 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
         }
     }
 
+
     public void deleteAll(Collection<E> entities) {
-        int i = 0;
-        for (E e : entities) {
-            entityManager.remove(entityManager.contains(e) ? e : entityManager.merge(e));
-            i++;
-            if (i % batchSize == 0 && i > 0) {
-                entityManager.flush();
-                entityManager.clear();
-                i = 0;
-            }
-        }
-        if (i > 0) {
-            entityManager.flush();
-            entityManager.clear();
+        for (E entity : entities) {
+            entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
         }
     }
+
 
     public void updateAll(Iterable<? extends E> entities) {
         int i = 0;
-        for (E e : entities) {
-            entityManager.merge(e);
+
+        for (E entity : entities) {
+            entityManager.merge(entity);
+
             i++;
+
+            // Flush a batch of inserts and release memory
             if (i % batchSize == 0 && i > 0) {
+
                 entityManager.flush();
                 entityManager.clear();
                 i = 0;
@@ -103,42 +111,34 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
         }
     }
 
-    public void deleteById(K id) {
-        entityManager.createQuery("delete " + clazz.getName() + " where id = :id")
-                .setParameter("id", id)
-                .executeUpdate();
-    }
-
     public void resetPassword(User user) {
-        entityManager.createQuery("update User u set u.password = :password where u.id = :id")
+        String hql = "UPDATE User u set u.password = :password where u.id = :id";
+        entityManager.createQuery(hql)
                 .setParameter("password", user.getPassword())
                 .setParameter("id", user.getId())
                 .executeUpdate();
     }
 
     public void updateUserPublicInfo(User user) {
-        entityManager.createQuery("update User u set " +
-                        "u.email = :email," +
-                        "u.password = :password," +
-                        "u.city = :city," +
-                        "u.linkSite = :linkSite," +
-                        "u.linkGitHub = :linkGitHub," +
-                        "u.linkVk = :linkVk," +
-                        "u.about = :about," +
-                        "u.imageLink = :imageLink," +
-                        "u.nickname = :nickname," +
-                        "u.role = :role " +
-                        " where u.id = :id")
-                .setParameter("email", user.getEmail())
-                .setParameter("password", user.getPassword())
-                .setParameter("city", user.getCity())
-                .setParameter("linkSite", user.getLinkSite())
-                .setParameter("linkGitHub", user.getLinkGitHub())
-                .setParameter("linkVk", user.getLinkVk())
+        String hql = "UPDATE User u set " +
+                "u.nickname = :nickname, " +
+                "u.about = :about, " +
+                "u.imageLink = :imageLink, " +
+                "u.linkSite = :linkSite, " +
+                "u.linkVk = :linkVk, " +
+                "u.linkGitHub = :linkGitHub, " +
+                "u.fullName = :fullName, " +
+                "u.city = :city " +
+                "where u.id = :id";
+        entityManager.createQuery(hql)
+                .setParameter("nickname", user.getNickname())
                 .setParameter("about", user.getAbout())
                 .setParameter("imageLink", user.getImageLink())
-                .setParameter("nickname", user.getNickname())
-                .setParameter("role", user.getRole())
+                .setParameter("linkSite", user.getLinkSite())
+                .setParameter("linkVk", user.getLinkVk())
+                .setParameter("linkGitHub", user.getLinkGitHub())
+                .setParameter("fullName", user.getFullName())
+                .setParameter("city", user.getCity())
                 .setParameter("id", user.getId())
                 .executeUpdate();
     }

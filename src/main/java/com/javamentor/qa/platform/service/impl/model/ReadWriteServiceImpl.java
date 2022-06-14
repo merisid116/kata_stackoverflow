@@ -1,73 +1,82 @@
 package com.javamentor.qa.platform.service.impl.model;
 
-import com.javamentor.qa.platform.dao.abstracts.model.ReadOnlyDao;
 import com.javamentor.qa.platform.dao.abstracts.model.ReadWriteDao;
+import com.javamentor.qa.platform.exception.ConstrainException;
 import com.javamentor.qa.platform.models.entity.user.User;
-import com.javamentor.qa.platform.service.abstracts.model.ReadWriteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
-@Service
-@Transactional
-public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, K> implements ReadWriteService<E, K> {
+public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, K> {
 
-    private final ReadWriteDao readWriteDao;
+    private final ReadWriteDao<E, K> readWriteDao;
+    private static final String ENTITIES_MUST_NOT_BE_NULL = "Entities cannot be null and empty";
 
-    @Autowired
-    public ReadWriteServiceImpl(ReadOnlyDao dao, ReadWriteDao readWriteDao) {
-        super(dao);
+    public ReadWriteServiceImpl(ReadWriteDao<E, K> readWriteDao) {
+        super(readWriteDao);
         this.readWriteDao = readWriteDao;
     }
 
-    @Override
+    @Transactional
     public void persist(E e) {
         readWriteDao.persist(e);
     }
 
-    @Override
+    @Transactional
     public void update(E e) {
         readWriteDao.update(e);
     }
 
-    @Override
+    @Transactional
     public void delete(E e) {
         readWriteDao.delete(e);
     }
 
-    @Override
-    public void persistAll(E... entities) {
-        readWriteDao.persistAll(entities);
-    }
-
-    @Override
-    public void persistAll(Collection<E> entities) {
-        readWriteDao.persistAll(entities);
-    }
-
-    @Override
-    public void deleteAll(Collection<E> entities) {
-        readWriteDao.deleteAll(entities);
-    }
-
-    @Override
-    public void updateAll(Iterable<? extends E> entities) {
-        readWriteDao.updateAll(entities);
-    }
-
-    @Override
+    @Transactional
     public void deleteById(K id) {
         readWriteDao.deleteById(id);
     }
 
-    @Override
+    @Transactional
+    public void persistAll(E... entities) {
+        if (entities == null || entities.length == 0) {
+            throw new ConstrainException(ENTITIES_MUST_NOT_BE_NULL);
+        }
+        readWriteDao.persistAll(entities);
+    }
+
+
+    @Transactional
+    public void persistAll(Collection<E> entities) {
+        if (entities == null || entities.isEmpty()) {
+            throw new ConstrainException(ENTITIES_MUST_NOT_BE_NULL);
+        }
+        readWriteDao.persistAll(entities);
+    }
+
+    @Transactional
+    public void deleteAll(Collection<E> entities) {
+        if (entities == null || entities.isEmpty()) {
+            throw new ConstrainException(ENTITIES_MUST_NOT_BE_NULL);
+        }
+        readWriteDao.deleteAll(entities);
+    }
+
+
+    @Transactional
+    public void updateAll(Iterable<? extends E> entities) {
+        if (entities == null || !entities.iterator().hasNext()) {
+            throw new ConstrainException(ENTITIES_MUST_NOT_BE_NULL);
+        }
+        readWriteDao.updateAll(entities);
+    }
+
+    @Transactional
     public void resetPassword(User user) {
         readWriteDao.resetPassword(user);
     }
 
-    @Override
+    @Transactional
     public void updateUserPublicInfo(User user) {
         readWriteDao.updateUserPublicInfo(user);
     }

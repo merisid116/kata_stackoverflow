@@ -3,6 +3,7 @@ package com.javamentor.qa.platform.models.entity.question.answer;
 import com.javamentor.qa.platform.exception.ApiRequestException;
 import com.javamentor.qa.platform.models.entity.Comment;
 import com.javamentor.qa.platform.models.entity.CommentType;
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -57,14 +58,15 @@ public class CommentAnswer implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CommentAnswer that = (CommentAnswer) o;
-        return Objects.equals(id, that.id);
+        if (!(o instanceof Chat)) return false;
+        CommentAnswer com = (CommentAnswer) o;
+        return id != null &&
+                id.equals(com.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return getClass().hashCode();
     }
 
     public void setId(Long id) {

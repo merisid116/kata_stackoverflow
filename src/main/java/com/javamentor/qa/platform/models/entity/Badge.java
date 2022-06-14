@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,4 +35,18 @@ public class Badge implements Serializable {
 
     @Column
     private String description;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chat)) return false;
+        Badge badge = (Badge) o;
+        return id != null &&
+                id.equals(badge.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity.question.answer;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,5 +40,18 @@ public class VoteAnswer {
         this.user = user;
         this.answer = answer;
         this.vote = vote;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chat)) return false;
+        VoteAnswer voteAnswer = (VoteAnswer) o;
+        return id != null &&
+                id.equals(voteAnswer.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

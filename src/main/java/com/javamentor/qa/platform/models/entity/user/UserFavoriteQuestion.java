@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.models.entity.user;
 
+import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,13 +51,13 @@ public class UserFavoriteQuestion implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserFavoriteQuestion that = (UserFavoriteQuestion) o;
-        return Objects.equals(id, that.id);
+        if (!(o instanceof Chat)) return false;
+        UserFavoriteQuestion userFavoriteQuestion = (UserFavoriteQuestion) o;
+        return id != null &&
+                id.equals(userFavoriteQuestion.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
-    }
+        return getClass().hashCode();}
 }

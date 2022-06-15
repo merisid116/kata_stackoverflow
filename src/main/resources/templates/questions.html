@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="container">
+    <br/>
+
+    <div class="row ">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <!------------------------------------------------------------------------------------------------------задать вопрос-->
+            <div class="d-flex flex-nowrap justify-content-between">
+                <h3 class="flex--item fl1 fs-headline1 mb24">Все вопросы</h3>
+                <a type="button" class="btn btn-primary float-right" href="/question"  id="askQuestion">Задать вопрос</a>
+            </div>
+
+            <h6>[ Общее количество вопросов ]</h6>
+            <br/>
+
+            <div id="Панель для вопросов">
+                <div class="nav-col btn-group justify-content-end btn-block mr-0">
+                    <div class="btn-панель инструментов " role="панель инструментов" aria-label="Панель инструментов с группами кнопок">
+                        <div class="btn-group btn-group" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-outline-secondary">Новые</button>
+                            <button type="button" class="btn btn-outline-secondary">Активные</button>
+                            <button type="button" class="btn btn-outline-secondary">Награжденные</button>
+                            <button type="button" class="btn btn-outline-secondary">Без ответа</button>
+                            <button type="button" class="btn btn-outline-secondary">Популярные</button>
+                        </div>
+
+                        <div class="btn-group btn-group" role="group" aria-label="Вторая группа">
+                            <button type="button" class="btn btn-link">
+                                <svg aria-hidden="true" class="svg-icon iconFilter" width="19" height="19" viewBox="0 0 19 19">
+                                    <path d="M2 4h14v2H2V4Zm2 4h10v2H4V8Zm8 4H6v2h6v-2Z"></path>
+                                </svg>
+
+                                Фильтр
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body bg-light">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+
+                                    <b>Показать</b>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" value="">Без ответа
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" value="">Без принятого ответа
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" value="">Вознагражденные
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col">
+
+                                    <b>Сортировать</b>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Новые
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            Последняя активность
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                        <label class="form-check-label" for="exampleRadios3">
+                                            Наибольшее количество голосов
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option1">
+                                        <label class="form-check-label" for="exampleRadios4">
+                                            Популярные
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+
+                                    <b>Теги</b>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">Мои отслеживаемые теги</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">Указать другие теги</label>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="напр. javascript">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="nav-col btn-group justify-content-between btn-block mr-0">
+                                    <button type="submit" class="btn btn-primary text-white float-left" id="submitFilter">Применить фильтр</button>
+                                    <button type="button" class="btn btn-light text-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Отмена
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div id="questionsAll" style= "min-height:350px">
+                <a href="#" class="list-group-item list-group-item-action h-50">
+                    <div class="row align-items-center h-100">
+                        <!-- голоса, ответы, просмотры-->
+                        <div class="d-flex flex-sm-column">
+                            <div class="p-13">0 голосов</div>
+                            <div class="p-13 border-success">0 ответов</div>
+                            <div class="p-13">0 просмотров</div>
+                        </div>
+                        <!-- вопрос-->
+                        <div class="col-sm-10">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 href="#" class="text-primary">Заголовок</h5>
+                                <small>дата</small>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 href="#" class="mb-1">Основная часть</h6>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 href="#" class="text-primary"> #tag</h6>
+                                <small class="text-primary">от кого</small>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+
+            <div class="card text-dark" style="background-color:#fff8dc">
+                <div class="card-header">
+                    <h6>Важное на Мете</h6>
+                </div>
+                <div class="card-body">Описание
+                </div>
+            </div>
+
+            <div class="card text-dark">
+                <div class="card-header">
+                    <h6>Теги</h6></div>
+                <div class="card-body">
+                    <div class="d-flex w-100 justify-content-between">
+                        <button type="button" class="btn btn-link btn-sm">#tag1</button>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <button type="button" class="btn btn-link btn-sm">#tag2</button>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <button type="button" class="btn btn-link btn-sm">#tag3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="/js/sidebar.js "></script>
+<script type="text/javascript" src="/js/header.js "></script>
+<script type="text/javascript" src="/js/footer.js "></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous">
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous">
+</script>

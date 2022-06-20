@@ -3,223 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
     <title>Title</title>
 </head>
-
 <body>
-<div class="container">
-    <br/>
+    <div class="container">
+        <div class="row ">
+            <div class="col-xl-8 col-lg-8  col-md-12 col-sm-12"><br><br>
+<!--задать вопрос-->
+                <div class="d-flex">
+                    <h1 class="flex--item fl1 fs-headline1 mb24">Всего вопросов: <span id="total-questions">XXX вопросов</span></h1>
 
-    <div class="row ">
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <!------------------------------------------------------------------------------------------------------задать вопрос-->
-            <div class="d-flex flex-nowrap justify-content-between">
-                <h3 class="flex--item fl1 fs-headline1 mb24">Все вопросы</h3>
-                <a type="button" class="btn btn-primary float-right" href="/question"  id="askQuestion">Задать вопрос</a>
-            </div>
+                    <div class="ml12 aside-cta flex--item print:d-none">
+                        <a href="/questions/ask" class="ws-nowrap s-btn s-btn__primary">
+                            Задать вопрос
+                        </a>
 
-            <h6>[ Общее количество вопросов ]</h6>
-            <br/>
-
-            <div id="Панель для вопросов">
-                <div class="nav-col btn-group justify-content-end btn-block mr-0">
-                    <div class="btn-панель инструментов " role="панель инструментов" aria-label="Панель инструментов с группами кнопок">
-                        <div class="btn-group btn-group" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary">Новые</button>
-                            <button type="button" class="btn btn-outline-secondary">Активные</button>
-                            <button type="button" class="btn btn-outline-secondary">Награжденные</button>
-                            <button type="button" class="btn btn-outline-secondary">Без ответа</button>
-                            <button type="button" class="btn btn-outline-secondary">Популярные</button>
-                        </div>
-
-                        <div class="btn-group btn-group" role="group" aria-label="Вторая группа">
-                            <button type="button" class="btn btn-link">
-                                <svg aria-hidden="true" class="svg-icon iconFilter" width="19" height="19" viewBox="0 0 19 19">
-                                    <path d="M2 4h14v2H2V4Zm2 4h10v2H4V8Zm8 4H6v2h6v-2Z"></path>
-                                </svg>
-
-                                Фильтр
-
-                            </button>
-                        </div>
                     </div>
                 </div>
-
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body bg-light">
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-
-                                    <b>Показать</b>
-
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" value="">Без ответа
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" value="">Без принятого ответа
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" value="">Вознагражденные
-                                        </label>
-                                    </div>
+<!-- блок с кнопками-->
+                <div id="questionBar">
+                    <div class="nav-col btn-group btn-block mr-0" >
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="width: 100%;">
+                            <div class="flex--item">
+                                <div class=" d-flex s-btn-group js-filter-btn">
+                                    <a class="js-sort-preference-change is-selected flex--item s-btn s-btn__muted s-btn__outlined" href="?tab=newest" data-nav-value="Newest"  data-shortcut="N">
+                                        Новые</a>
+                                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined" href="?tab=Active" data-nav-xhref="?tab=active"  data-nav-value="Active" data-shortcut="A">
+                                        Текущие</a>
+                                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined" href="?tab=bounties" data-nav-xhref="?tab=bounties"  data-nav-value="bounties" data-shortcut="B">
+                                        <span class="bounty-indicator-tab">8</span>            Конкурсные</a>
+                                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined" href="?tab=Unanswered" data-nav-xhref="?tab=newest"  data-nav-value="unanswered" data-shortcut="U">
+                                       Неотвеченные</a>
+                                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined" href="?tab=Frequent" data-nav-xhref="?tab=frequent"  data-nav-value="frequent" data-shortcut="F">
+                                        Цитируемые</a>
+                                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined" href="?tab=Votes" data-nav-xhref="?tab=votes"  data-nav-value="votes" data-shortcut="V">
+                                        Рейтинг</a>
                                 </div>
+                            </div>
 
+                            <div class="btn-group" role="group" aria-label="Second group" style="margin-left: auto">
+                                <button type="button" class="btn btn-outline-dark bg-light btn-white text-secondary float-right" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    <svg aria-hidden="true" class="svg-icon iconFilter" width="19" height="19" viewBox="0 0 19 19">
+                                        <path d="M2 4h14v2H2V4Zm2 4h10v2H4V8Zm8 4H6v2h6v-2Z"></path>
+                                    </svg>
 
-                                <div class="col">
+                                    Фильтр
 
-                                    <b>Сортировать</b>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Новые
-                                        </label>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body bg-light">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+
+                                        <b>Показать</b>
+
+                                        <div>
+                                            <input type="checkbox" id="check-1">
+                                            <label for="check-1">Без ответа</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="check-2">
+                                            <label for="check-2">Без принятого ответа</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="check-3">
+                                            <label for="check-3">Вознагражденные</label>
+                                        </div>
                                     </div>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                            Последняя активность
-                                        </label>
+<!----фильтр-->
+                                    <div class="col">
+
+                                        <b>Сортировать</b>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                Новые
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                            <label class="form-check-label" for="exampleRadios2">
+                                                Последняя активность
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                            <label class="form-check-label" for="exampleRadios3">
+                                                Наибольшее количество голосов
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option1">
+                                            <label class="form-check-label" for="exampleRadios4">
+                                                Популярные
+                                            </label>
+                                        </div>
                                     </div>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                            Наибольшее количество голосов
-                                        </label>
-                                    </div>
+                                    <div class="col">
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option1">
-                                        <label class="form-check-label" for="exampleRadios4">
-                                            Популярные
-                                        </label>
-                                    </div>
-                                </div>
+                                        <b>Теги</b>
 
-                                <div class="col">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio1">Мои отслеживаемые теги</label>
+                                        </div>
 
-                                    <b>Теги</b>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio2">Указать другие теги</label>
 
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio1">Мои отслеживаемые теги</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio2">Указать другие теги</label>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="напр. javascript">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="напр. javascript">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="nav-col btn-group justify-content-between btn-block mr-0">
-                                    <button type="submit" class="btn btn-primary text-white float-left" id="submitFilter">Применить фильтр</button>
-                                    <button type="button" class="btn btn-light text-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                        Отмена
-                                    </button>
+                                <div class="row">
+                                    <div class="nav-col btn-group justify-content-between btn-block mr-0">
+                                        <button type="submit" class="btn btn-primary text-white float-left" id="submitFilter" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Применить фильтр</button>
+                                        <button type="button" class="btn btn-light text-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            Отмена
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <br/>
-
-            <div id="questionsAll" style= "min-height:350px">
-                <a href="#" class="list-group-item list-group-item-action h-50">
-                    <div class="row align-items-center h-100">
-                        <!-- голоса, ответы, просмотры-->
-                        <div class="d-flex flex-sm-column">
-                            <div class="p-13">0 голосов</div>
-                            <div class="p-13 border-success">0 ответов</div>
-                            <div class="p-13">0 просмотров</div>
+                <br/>
+<!--список с вопросами-->
+                <div id="questionsAll" style= "min-height:350px">
+                    <a href="#" class="list-group-item list-group-item-action h-50">
+                        <div class="row align-items-center h-100">
+                            <!--            голоса, ответы, просмотры-->
+                            <div class="d-flex flex-sm-column">
+                                <div class="p-13">0 голосов</div>
+                                <div class="p-13 border-success">0 ответов</div>
+                                <div class="p-13">0 просмотров</div>
+                            </div>
+<!--вопрос-->
+                            <div class="col-sm-10">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 href="#" class="mb-1">суть вопроса</h4>
+                                    <small>дата</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 href="#" class="mb-1">описание вопроса</h6>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 href="#" class="mb-1">теги</h6>
+                                    <small>кто прислал</small>
+                                </div>
+                            </div>
                         </div>
-                        <!-- вопрос-->
-                        <div class="col-sm-10">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 href="#" class="text-primary">Заголовок</h5>
-                                <small>дата</small>
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action h-50">
+                        <div class="row align-items-center h-100">
+<!--голоса, ответы, просмотры-->
+                            <div class="d-flex flex-sm-column">
+                                <div class="p-13">0 голосов</div>
+                                <div class="p-13 border-success">0 ответов</div>
+                                <div class="p-13">1300 просмотров</div>
                             </div>
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 href="#" class="mb-1">Основная часть</h6>
+<!--вопрос-->
+                            <div class="col-sm-10">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 href="#" class="mb-1">суть вопроса</h4>
+                                    <small>дата</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 href="#" class="mb-1">для проверки длинный текст... надеюсь в следующий раз с фронтом столкнусь не скоро) фронтендер явно сделал бы лучше... </h6>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 href="#" class="mb-1">теги</h6>
+                                    <small>кто прислал</small>
+                                </div>
                             </div>
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 href="#" class="text-primary"> #tag</h6>
-                                <small class="text-primary">от кого</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="s-pagination site496 themed pager float-left">
+                    <div class="s-pagination--item bg-dark text-info is-selected"><b>1</b></div>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=2" rel="" title="Go to page 2"><b>2</b></a>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=3" rel="" title="Go to page 3"><b>3</b></a>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=4" rel="" title="Go to page 4"><b>4</b></a>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=5" rel="" title="Go to page 5"><b>5</b></a>
+                    <div class="s-pagination--item s-pagination--item__clear">…</div>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=20" rel="" title="Go to page"><b>122</b></a>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=20" rel="" title="Go to page"><b>123</b></a>
+                    <a class="s-pagination--item js-pagination-item bg-dark text-info" href="/questions?tab=newest&amp;page=2" rel="next" title="Go to page 2"> <b>Далее</b></a></div>
+                <div class="s-pagination site496 themed page-sizer float-right">
+                    <a href="/questions?tab=newest&amp;pagesize=15" title="Show 15 items per page" class="s-pagination--item bg-dark text-info is-selected"><b>15</b></a>
+                    <a href="/questions?tab=newest&amp;pagesize=30" title="Show 30 items per page" class="s-pagination--item bg-dark text-info "><b>30</b></a>
+                    <a href="/questions?tab=newest&amp;pagesize=50" title="Show 50 items per page" class="s-pagination--item bg-dark text-info "><b>50</b></a>
+                    <span class="s-pagination--item s-pagination--item__clear">на странице</span>
+                </div>
+            </div>
+<!--колонка справа с картами-->
+            <div class="col-md-4 col-sm-4">
+
+                <div id="sidebar"><br><br>
+
+
+                    <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
+                        <ul class="d-block p0 m0">
+                            <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                                Важное на Мете
+                            </div>
+                            <li class="s-sidebarwidget--item d-flex px16">
+                                <div class="flex--item1 fl-shrink0">
+                                    <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>            </div>
+                                <div class="flex--item wmn0 ow-break-word">
+                                    <a href="/users" class="js-gps-track" data-ga="[]" data-gps-track="communitybulletin.click({ priority: 3, position: 0 })">Пока что участники - заменить, мб на чаты</a>
+                                </div>
+                            </li>
+                            <li class="s-sidebarwidget--item d-flex px16">
+                                <div class="flex--item1 fl-shrink0">
+                                    <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>            </div>
+                                <div class="flex--item wmn0 ow-break-word">
+                                    <a href="/tags" class="js-gps-track" data-ga="[]" data-gps-track="communitybulletin.click({ priority: 3, position: 1 })">Пока что теги - заменить, мб на чаты</a>
+                                </div>
+                            </li>
+                            <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+                                Обсуждаемое на Мете
+                            </div>
+                            <li class="s-sidebarwidget--item d-flex px16">
+                                <div class="flex--item1 fl-shrink0">
+                                    <span class="fc-black-500" title="Question score (upvotes - downvotes)">3</span>
+                                </div>
+                                <div class="flex--item wmn0 ow-break-word">
+                                    <a href="/users" class="js-gps-track" data-ga="[]" data-gps-track="communitybulletin.click({ priority: 7, position: 2 })">Вопросов то нет пока что-юзеры)</a>
+                                </div>
+                            </li>
+                            <li class="s-sidebarwidget--item d-flex px16">
+                                <div class="flex--item1 fl-shrink0">
+                                    <span class="fc-black-500" title="Question score (upvotes - downvotes)">4</span>
+                                </div>
+                                <div class="flex--item wmn0 ow-break-word">
+                                    <a href="/tags" class="js-gps-track" data-ga="[]" data-gps-track="communitybulletin.click({ priority: 7, position: 3 })">вопросов нет - теги</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="js-tag-preferences-container">
+                        <div class="s-sidebarwidget mb16">
+                            <div class="s-sidebarwidget--header d-flex">
+                                <span class="flex--item fl1 overflow-hidden ow-break-word">Отслеживаемые метки</span>
+                                <a class="js-edit-watched-tags flex--item ml12 d-none" href="/users/tag-notifications/19369540#watching-1">редактировать</a>
+                            </div>
+                            <div class="s-sidebarwidget--content fd-column">
+                                <div class="js-watched-tag-list d-flex gs4 py4 fw-wrap">
+                                    <script type="text/html" class="js-tag-template">
+                                        <div class="js-tag flex--item ">
+                                            <a href="/questions/tagged/template" class="post-tag" title="показывать вопросы с данным тегом" rel="tag">template</a>
+                                        </div></script>
+                                    <div class="js-tag flex--item ">
+                                        <a href="/questions/tagged/java" class="post-tag user-tag" title="показать вопросы по тегу" rel="tag">java
+                                            <span class="delete-tag" title="Удалить тег"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="js-add-watched-container">
+                                    <form class="mt8 d-flex">
+                                        <input type="text" class="flex--item fl1 m0 mrn1 s-input s-input__sm brr0 ac_input" autocomplete="off">
+                                        <button type="submit" class="flex--item s-btn s-btn__primary blr0 m0">Добавить</button>
+                                    </form>
+                                </div>
+
+                                <div class="js-show-add-watched-container d-flex fd-column ta-center ai-center gsy gs16 mx-auto d-none">
+                                    <div class="flex--item">
+                                        <svg aria-hidden="true" class="fc-blue-400 d:fc-blue-700 svg-spot spotSearch" width="48" height="48" viewBox="0 0 48 48">
+                                            <path opacity=".2" d="M29.22 38.1a3.4 3.4 0 0 1 4.81-4.82l8.81 8.81a3.4 3.4 0 0 1-4.81 4.81l-8.81-8.8Z"></path>
+                                            <path d="M18.5 5a1 1 0 1 0 0 2c.63 0 1.24.05 1.84.15a1 1 0 0 0 .32-1.98A13.6 13.6 0 0 0 18.5 5Zm7.02
+                                        1.97a1 1 0 1 0-1.04 1.7 11.5 11.5 0 0 1 5.44 8.45 1 1 0 0 0 1.98-.24 13.5 13.5 0 0 0-6.38-9.91ZM18.5
+                                        0a18.5 18.5 0 1 0 10.76 33.55c.16.57.46 1.12.9 1.57L40 44.94A3.5 3.5 0 1 0 44.94 40l-9.82-9.82c-.45-
+                                        .45-1-.75-1.57-.9A18.5 18.5 0 0 0 18.5 0ZM2 18.5a16.5 16.5 0 1 1 33 0 16.5 16.5 0 0 1-33 0Zm29.58 15
+                                        .2a1.5 1.5 0 1 1 2.12-2.12l9.83 9.83a1.5 1.5 0 1 1-2.12 2.12l-9.83-9.83Z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <p class="flex--item wmx2 fc-black-300">
+                                        Не показывать вопросы с данным тегом
+                                    </p>
+                                    <a class="js-show-add-watched flex--item s-btn s-btn__filled s-btn__sm s-btn__icon d-none">
+                                        <svg aria-hidden="true" class="svg-icon iconEye" width="18" height="18" viewBox="0 0 18 18">
+                                            <path d="M9.06 3C4 3 1 9 1 9s3 6 8.06 6C14 15 17 9 17 9s-3-6-7.94-6ZM9 13a4 4 0 1 1 0-8 4
+                                         4 0 0 1 0 8Zm0-2a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2Z">
+                                            </path>
+                                        </svg> Показать вопросы по тегу
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="-ignored s-sidebarwidget mb16">
+                            <div class="s-sidebarwidget--header d-flex">
+                                <span class="flex--item fl1">Игнорируемые метки</span>
+                                <a class="js-edit-ignored-tags flex--item ml12 d-none" href="/users/tag-notifications/19369540#ignored-1">редактировать</a>
+                            </div>
+                            <div class="s-sidebarwidget--content fd-column">
+                                <div class="js-ignored-tag-list d-flex gs4 py4 fw-wrap ai-baseline">
+                                    <script type="text/html" class="js-tag-template">
+                                        <div class="js-tag flex--item ">
+                                            <a href="/questions/tagged/template" class="post-tag" title="показать вопросы по тегу" rel="tag">template</a>
+                                        </div>
+                                    </script>
+                                    <div class="js-tag flex--item ">
+                                        <a href="/questions/tagged/javascript" class="post-tag user-tag" title="показать вопросы по тегу" rel="tag">javascript
+                                            <span class="delete-tag" title="Удалить тег"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="js-add-ignored-container"><form class="mt8 d-flex">
+                                    <input type="text" class="flex--item fl1 m0 mrn1 s-input s-input__sm brr0 ac_input" autocomplete="off">
+                                    <button type="submit" class="flex--item s-btn s-btn__primary blr0 m0">Добавить</button>
+                                </form>
+                                </div>
+
+                                <button class="js-show-add-ignored d-none mx-auto d-inline-block s-btn s-btn__filled s-btn__sm">Добавить</button>
+
                             </div>
                         </div>
                     </div>
-                </a>
 
+                    <div class="module" id="recent-tags"><br><br>
+                        <h4 id="h-recent-tags">Недавние метки</h4>
+                        <div id="recent-tags-list">
+                            <a href="/questions/tagged/core" class="post-tag" title="показать вопросы с меткой [core]" rel="tag">core</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">3</span> </span><br>
+                            <a href="/questions/tagged/javascript" class="post-tag" title="показать вопросы с меткой [javascript]" rel="tag">javascript</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">5</span> </span><br>
+                            <a href="/questions/tagged/css" class="post-tag" title="показать вопросы с меткой [css]" rel="tag">css</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">1</span> </span><br>
+                            <a href="/questions/tagged/java" class="post-tag" title="показать вопросы с меткой [java]" rel="tag">java</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">32</span> </span><br>
+                            <a href="/questions/tagged/html" class="post-tag" title="показать вопросы с меткой [html]" rel="tag">html</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">31</span> </span><br>
+                            <a href="/questions/tagged/ооп" class="post-tag" title="показать вопросы с меткой [ооп]" rel="tag">ооп</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">28</span> </span><br>
+                            <a href="/questions/tagged/массивы" class="post-tag" title="показать вопросы с меткой [массивы]" rel="tag">массивы</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">15</span> </span><br>
+                            <a href="/questions/tagged/sql" class="post-tag" title="показать вопросы с меткой [sql]" rel="tag">sql</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">14</span> </span><br>
+                            <a href="/questions/tagged/regex" class="post-tag" title="показать вопросы с меткой [регулярные-выражения]" rel="tag">регулярные-выражения</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">11</span> </span><br>
+                            <a href="/questions/tagged/многопоточность" class="post-tag" title="показать вопросы с меткой [многопоточность]" rel="tag">многопоточность</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">11</span> </span><br>
+                            <a href="/questions/tagged/list" class="post-tag" title="показать вопросы с меткой [list]" rel="tag">list</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">11</span> </span><br>
+                            <a href="/questions/tagged/json" class="post-tag" title="показать вопросы с меткой [json]" rel="tag">json</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">9</span> </span><br>
+                            <a href="/questions/tagged/классы" class="post-tag" title="показать вопросы с меткой [классы]" rel="tag">классы</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">8</span> </span><br>
+                            <a href="/questions/tagged/docker" class="post-tag" title="показать вопросы с меткой [docker]" rel="tag">docker</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">7</span> </span><br>
+                            <a href="/questions/tagged/webMVC" class="post-tag" title="показать вопросы с меткой [веб-программирование]" rel="tag">веб-программирование</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">6</span> </span><br>
+                            <a href="/questions/tagged/%d0%b1%d0%b0%d0%b7%d0%b0-%d0%b4%d0%b0%d0%bd%d0%bd%d1%8b%d1%85" class="post-tag" title="показать вопросы с меткой [база-данных]" rel="tag">база-данных</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">4</span> </span><br>
+                        </div>
+                        <p class="ta-right"><a href="/tags">все метки »</a></p>
+                    </div>
 
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4 col-sm-4">
 
-            <div class="card text-dark" style="background-color:#fff8dc">
-                <div class="card-header">
-                    <h6>Важное на Мете</h6>
-                </div>
-                <div class="card-body">Описание
-                </div>
-            </div>
 
-            <div class="card text-dark">
-                <div class="card-header">
-                    <h6>Теги</h6></div>
-                <div class="card-body">
-                    <div class="d-flex w-100 justify-content-between">
-                        <button type="button" class="btn btn-link btn-sm">#tag1</button>
-                    </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <button type="button" class="btn btn-link btn-sm">#tag2</button>
-                    </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <button type="button" class="btn btn-link btn-sm">#tag3</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
 </body>
 </html>
 
-<script type="text/javascript" src="/js/sidebar.js "></script>
-<script type="text/javascript" src="/js/header.js "></script>
-<script type="text/javascript" src="/js/footer.js "></script>
+<script type="text/javascript" src="/js/sidebar.js " defer></script>
+<script type="text/javascript" src="/js/header.js " defer></script>
+<script type="text/javascript" src="/js/footer.js " defer></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous">
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous">
 </script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous">
 </script>
+

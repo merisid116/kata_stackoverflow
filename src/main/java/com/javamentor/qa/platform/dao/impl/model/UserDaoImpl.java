@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao {
+
     @Override
     public Optional<User> getByEmail(String email) {
         return super.getByEmail(email);

@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
-
 @Repository
 public class RoleDaoImpl extends ReadWriteDaoImpl<Role, Long> implements RoleDao {
 
@@ -18,7 +17,7 @@ public class RoleDaoImpl extends ReadWriteDaoImpl<Role, Long> implements RoleDao
 
     @Override
     public Optional<Role> getByName(String name) {
-         return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery("select r from Role r where r.name = :name")
-                 .setParameter("name", name));
+        return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery("select r from Role r where r.name = :name")
+                .setParameter("name", name));
     }
 }

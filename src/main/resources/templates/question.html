@@ -27,7 +27,7 @@
                         <h4>Заголовок</h4>
                     <small>Будьте конкретны. Представьте, что вы задаёте вопрос другому человеку.</small>
                     </label>
-                    <input type="answer" class="form-control" id="exampleFormControlInput1" placeholder="В чем заключается ваш вопрос?">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="В чем заключается ваш вопрос?">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">
@@ -44,7 +44,7 @@
                         <h4>Метки</h4>
                         <small>Добавьте не более 5 меток, описывающих о чём ваш вопрос</small>
                     </label>
-                    <input type="tag" class="form-control" id="#" placeholder="Ваши метки">
+                    <input type="text" class="js-form-control" id="#" placeholder="Ваши метки">
                 </div>
                 </br>
                 <button type="submit" class="btn btn-primary">Отправить</button>
@@ -56,9 +56,11 @@
 </body>
 </html>
 
-<script type="text/javascript" src="/js/sidebar.js "></script>
-<script type="text/javascript" src="/js/header.js "></script>
-<script type="text/javascript" src="/js/footer.js "></script>
+<script type="text/javascript" th:src="@{/js/sidebar.js}" src="/static/js/sidebar.js " defer></script>
+<script type="text/javascript" th:src="@{/js/header.js}"  src="/static/js/header.js " defer></script>
+<script type="text/javascript" th:src="@{/js/footer.js}" src="/static/js/footer.js " defer></script>
+
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

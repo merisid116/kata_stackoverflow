@@ -7,8 +7,6 @@ u
 Esrc/main/java/com/javamentor/qa/platform/models/entity/user/Role.java,8\e\8edd7dc97cb864b9fe004ffdb9d16924b617d8b2
 „
 Tsrc/main/java/com/javamentor/qa/platform/service/impl/model/ReadOnlyServiceImpl.java,c\6\c6b83eaed009160ea274b551b77f5bbab7b4bb01
-‚
-Rsrc/main/java/com/javamentor/qa/platform/models/entity/question/answer/Answer.java,d\4\d4b1cc1af4641e4007cebfa40949f1fecc6fb993
 y
 Isrc/main/java/com/javamentor/qa/platform/dao/abstracts/model/RoleDao.java,b\d\bd0532328ec068390a97e76baf810712a660ea04
 †
@@ -25,3 +23,17 @@ Hsrc/main/java/com/javamentor/qa/platform/dao/impl/model/UserDaoImpl.java,8\e\8
 Qsrc/main/java/com/javamentor/qa/platform/service/abstracts/model/UserService.java,1\5\15a5dd03eb54534c9c00adab7ef7753b15b0b424
 €
 Psrc/main/java/com/javamentor/qa/platform/service/impl/model/UserServiceImpl.java,b\7\b78e0d26251ca0321fa80658527a3788739f8d90
+…
+Usrc/main/java/com/javamentor/qa/platform/service/impl/model/ReadWriteServiceImpl.java,b\5\b54fcac242b2cbd02b625c7dbe30a6500440569b
+x
+Hsrc/main/java/com/javamentor/qa/platform/dao/impl/model/RoleDaoImpl.java,2\a\2ad57be50d01a0e245f8a00bf6971af192f4c7b3
+}
+Msrc/main/java/com/javamentor/qa/platform/dao/impl/model/ReadWriteDaoImpl.java,0\d\0da837c38dfb0fe399d14f3d39d4d86c4f177596
+~
+Nsrc/main/java/com/javamentor/qa/platform/dao/abstracts/model/ReadWriteDao.java,3\2\320e999e59140898367a368b146bfa8eba4752fa
+|
+Lsrc/main/java/com/javamentor/qa/platform/dao/impl/model/ReadOnlyDaoImpl.java,2\8\28e0832a86f24256f13fa70e6e65819b79282daf
+~
+Nsrc/main/java/com/javamentor/qa/platform/service/impl/TestDataInitService.java,3\a\3a9c85deecc63fc211438cd5a33b9523187d9ea8
+‚
+Rsrc/main/java/com/javamentor/qa/platform/models/entity/question/answer/Answer.java,d\4\d4b1cc1af4641e4007cebfa40949f1fecc6fb993

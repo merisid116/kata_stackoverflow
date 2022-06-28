@@ -1,6 +1,5 @@
 package com.javamentor.qa.platform.security;
 
-import com.javamentor.qa.platform.service.impl.model.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

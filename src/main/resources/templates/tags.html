@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Метки - Kata</title>
+</head>
+<body>
+<div class="container mb-16">
+    <div id="content">
+
+        <div id="mainbar mb0">
+            <h1 class="h1 mb-16">
+                Метки
+            </h1>
+
+            <p class="fs-body2 wmx6 mb16">
+                Метка — это ключевое слово, позволяющее отнести ваш вопрос в одну категорию с другими похожими
+                вопросами. Благодаря подбору правильных меток другие участники смогут проще найти ваш вопрос и быстрее
+                дать на него ответ.
+            </p>
+
+            <div class="d-flex fw-wrap gs4 mb24 ai-center">
+
+                <!-----------------
+                ССЫЛКА НА СИНОНИМЫ
+                ------------------->
+                <a class="flex--item s-link fs-body1" href="/tag_page/synonyms">Показать все синонимы меток</a>
+            </div>
+
+            <div class="d-flex fw-wrap">
+                <!-- ----------
+                ФИЛЬТР ПО ИМЕНИ
+                --------------->
+                <div class="flex ps-relative mb12">
+                    <input id="tagfilter" class="s-input s-input__search h100" autocomplete="off" name="tagfilter"
+                           type="text" maxlength="35" placeholder="Фильтрация по имени" autofocus="">
+                    <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18"
+                         height="18" viewBox="0 0 18 18">
+                        <path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path>
+                    </svg>
+                </div>
+
+                <!-------------------
+                КНОПКИ УПОРЯДОЧИВАНИЯ
+                --------------------->
+                <div class="flex--item ml-auto mb12 d-flex s-btn-group js-filter-btn">
+                    <a class="js-sort-preference-change youarehere is-selected flex--item s-btn s-btn__muted s-btn__outlined"
+                       href="/tags?tab=popular" data-nav-xhref="" title="наиболее популярные метки" data-value="popular"
+                       data-shortcut="">
+                        Популярные</a>
+                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined"
+                       href="/tags?tab=name" data-nav-xhref="" title="метки в алфавитном порядке" data-value="name"
+                       data-shortcut="">
+                        Имя</a>
+                    <a class="js-sort-preference-change flex--item s-btn s-btn__muted s-btn__outlined"
+                       href="/tags?tab=new" data-nav-xhref="" title="недавно созданные метки" data-value="new"
+                       data-shortcut="">
+                        Новые</a>
+                </div>
+            </div>
+
+
+            <!----------
+            СПИСОК ТЕГОВ
+            ------------>
+            <div id="tags_list">
+
+                <div id="tags-browser" class="d-grid grid__4 lg:grid__3 md:grid__2 sm:grid__1 g12">
+                    <div class="grid--item s-card js-tag-cell d-flex fd-column">
+                        <div class="d-flex jc-space-between ai-center mb12">
+                            <div class="flex--item">
+                                <a href="/questions/tagged/java" class="post-tag"
+                                   title="показать вопросы с меткой [java]" rel="tag">java</a>
+                            </div>
+                        </div>
+
+                        <div class="flex--item fc-medium mb12 v-truncate4">
+                            Java (не путать с JavaScript) — строго типизированный объектно-ориентированный язык
+                            программирования. Приложения Java обычно транслируются в специальный байт-код, поэтому они
+                            могут работать на любой к…
+                        </div>
+
+                        <div class="mt-auto d-flex jc-space-between fs-caption fc-black-400">
+                            <div class="flex--item">0 вопросов</div>
+                            <div class="flex--item s-anchors s-anchors__inherit"><a
+                                    href="/questions/tagged/java?sort=newest&amp;days=1"
+                                    title="10 вопросов с меткой [java] за последние 24 часа">0 задано сегодня</a>, <a
+                                    href="/questions/tagged/java?sort=newest&amp;days=7"
+                                    title="80 вопросов с меткой [java] за последние 7 дней">0 за неделю</a></div>
+                        </div>
+                    </div>
+
+                    <div class="grid--item s-card js-tag-cell d-flex fd-column">
+                        <div class="d-flex jc-space-between ai-center mb12">
+                            <div class="flex--item">
+                                <a href="/questions/tagged/javascript" class="post-tag"
+                                   title="показать вопросы с меткой [javascript]" rel="tag">javascript</a>
+                            </div>
+                        </div>
+
+                        <div class="flex--item fc-medium mb12 v-truncate4">
+                            JavaScript (не путать с Java) — динамический, интерпретируемый язык со слабой типизацией,
+                            обычно используемый для написания скриптов на стороне клиента. Эта метка предназначена для
+                            вопросов, связанных…
+                        </div>
+
+                        <div class="mt-auto d-flex jc-space-between fs-caption fc-black-400">
+                            <div class="flex--item">61612 вопросов</div>
+                            <div class="flex--item s-anchors s-anchors__inherit"><a
+                                    href="/questions/tagged/javascript?sort=newest&amp;days=1"
+                                    title="28 вопросов с меткой [javascript] за последние 24 часа">0 задано сегодня</a>,
+                                <a href="/questions/tagged/javascript?sort=newest&amp;days=7"
+                                   title="172 вопроса с меткой [javascript] за последние 7 дней">0 за неделю</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!------
+                СТРАНИЦЫ
+                -------->
+                <div class="pagination pager float-right">
+                    <div class="s-pagination--item bg-dark is-selected">1</div>
+                    <a class="s-pagination--item js-pagination-item" href="/tag_page&?page=2" rel=""
+                       title="Перейти на страницу 2">2</a>
+                    <a class="s-pagination--item js-pagination-item" href="/next" rel="next"
+                       title="Перейти на страницу 2"> Далее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</html>

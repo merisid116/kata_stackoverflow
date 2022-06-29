@@ -36,6 +36,11 @@ public class IgnoredTag  implements Serializable {
     @Type(type = "org.hibernate.type.LocalDateTimeType")
     private LocalDateTime persistDateTime;
 
+    public IgnoredTag(Long id, User user) {
+        this.id = id;
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -31,7 +31,7 @@ document.querySelector("div").insertAdjacentHTML("afterbegin","<div id=\"left-si
     "            </a>\n" +
     "        </li>\n" +
     "        <li id=\"li-users\" class=\"\">\n" +
-    "            <a id=\"nav-users\" href=\"/users\" class=\" js-gps-track nav-links--link\" data-gps-track=\"top_nav.click({is_current:false, location:1, destination:3})\" aria-controls=\"\" data-controller=\"\" data-s-popover-placement=\"right\" data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\">\n" +
+    "            <a id=\"nav-users\" href=\"/usersPage\" class=\" js-gps-track nav-links--link\" data-gps-track=\"top_nav.click({is_current:false, location:1, destination:3})\" aria-controls=\"\" data-controller=\"\" data-s-popover-placement=\"right\" data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\">\n" +
     "                    <div class=\"d-flex ai-center\">\n" +
     "                        <div class=\"flex--item truncate\">\n" +
     "                            Участники\n" +

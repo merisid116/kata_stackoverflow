@@ -1,43 +1,40 @@
 package com.javamentor.qa.platform.service.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.IgnoredTagDao;
-import com.javamentor.qa.platform.exception.ConstrainException;
+import com.javamentor.qa.platform.exception.TagAlreadyExistsException;
+import com.javamentor.qa.platform.exception.TagNotFoundException;
 import com.javamentor.qa.platform.models.entity.question.IgnoredTag;
 import com.javamentor.qa.platform.models.entity.question.Tag;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.model.IgnoredTagService;
+import com.javamentor.qa.platform.service.abstracts.model.TagService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Optional;
-@Transactional
+
 @Service
 public class IgnoredTagServiceImpl extends ReadWriteServiceImpl<IgnoredTag, Long> implements IgnoredTagService {
-    @PersistenceContext
-    private EntityManager entityManager;
-    private final IgnoredTagDao ignoredTagDao;
-    private static final String ENTITIES_MUST_NOT_BE_NULL = "Entities cannot be null and empty";
 
-    public IgnoredTagServiceImpl(IgnoredTagDao ignoredTagDao) {
+    private final IgnoredTagDao ignoredTagDao;
+    private final TagService tagService;
+
+    public IgnoredTagServiceImpl(IgnoredTagDao ignoredTagDao, TagService tagService) {
         super(ignoredTagDao);
         this.ignoredTagDao = ignoredTagDao;
+        this.tagService = tagService;
     }
 
-    @Override
-    public Optional<IgnoredTag> getByUserAndTag(User user, Tag tag) {
-        return ignoredTagDao.getByUserAndTag(user, tag);
-    }
-
-    @Override
-    public IgnoredTag add(Long tagId, User user) {
-        IgnoredTag tag = new IgnoredTag(tagId,user);
-        if(tagId == null){
-            throw new ConstrainException(ENTITIES_MUST_NOT_BE_NULL);
-        }else{
-           entityManager.persist(tag);
+    @Transactional
+    public Tag add(Long tagId, User user) {
+        Optional<Tag> tag = tagService.getById(tagId);
+        if (!tag.isPresent()) {
+            throw new TagNotFoundException("тег с таким id не найден");
         }
-        return tag;
+        if (ignoredTagDao.getByUserAndTag(user, tag.get()).isPresent()) {
+            throw new TagAlreadyExistsException("тег уже был добавлен в игнорируемые ранее");
+        }
+        super.persist(new IgnoredTag(tag.get(), user));
+        return tag.get();
     }
 }

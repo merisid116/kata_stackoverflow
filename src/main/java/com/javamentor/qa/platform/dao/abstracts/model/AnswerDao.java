@@ -13,5 +13,5 @@ public interface AnswerDao extends ReadWriteDao<Answer, Long> {
     @Override
     void deleteById(Long id);
 
-    Optional<Answer> getById(Long id);
+    Optional<Answer> getById(Long answerId);
 }

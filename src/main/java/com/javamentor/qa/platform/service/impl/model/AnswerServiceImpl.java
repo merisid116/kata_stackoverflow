@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-@Transactional
+
 @Service
 public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implements AnswerService {
 
@@ -19,13 +19,21 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
     }
 
     @Override
-    public Optional<Answer> getAnswerForVote(Long answerId, Long userId) {return answerDao.getAnswerForVote(answerId,userId);}
+    public Optional<Answer> getAnswerForVote(Long answerId, Long userId) {
+        return answerDao.getAnswerForVote(answerId,userId);
+    }
 
     @Override
-    public void updateAnswerSpecial(Answer answer) {answerDao.updateAnswerSpecial(answer);}
+    public void updateAnswerSpecial(Answer answer) {
+        answerDao.updateAnswerSpecial(answer);
+    }
 
     @Override
-    public void deleteById(Long id){ answerDao.deleteById(id);}
+    public void deleteById(Long id){
+        answerDao.deleteById(id);
+    }
     @Override
-    public Optional<Answer> getById(Long id){ return answerDao.getById(id);}
+    public Optional<Answer> getById(Long id){
+        return answerDao.getById(id);
+    }
 }

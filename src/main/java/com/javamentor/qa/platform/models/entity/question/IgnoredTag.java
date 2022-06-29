@@ -36,8 +36,8 @@ public class IgnoredTag  implements Serializable {
     @Type(type = "org.hibernate.type.LocalDateTimeType")
     private LocalDateTime persistDateTime;
 
-    public IgnoredTag(Long id, User user) {
-        this.id = id;
+    public IgnoredTag(Tag ignoredTag, User user) {
+        this.ignoredTag = ignoredTag;
         this.user = user;
     }
 

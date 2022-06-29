@@ -7,6 +7,5 @@ import com.javamentor.qa.platform.models.entity.user.User;
 import java.util.Optional;
 
 public interface IgnoredTagService extends ReadWriteService<IgnoredTag,Long>{
-    Optional<IgnoredTag> getByUserAndTag(User user, Tag tag);
-    IgnoredTag add(Long tagId, User user);
+    Tag add(Long tagId, User user);
 }

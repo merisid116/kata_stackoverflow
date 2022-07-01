@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:10'
+    container_name: 'stackkata-postgres'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=sAMogyg6*'
+      - 'POSTGRES_DB=stack_jm_ref'
+
+  app:
+    build: ./
+    container_name: 'stackkata-app'
+    ports:
+      - 8080:8080

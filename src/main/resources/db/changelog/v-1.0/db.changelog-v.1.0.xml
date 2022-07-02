@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <include file="01-changeset-answer-table.xml" relativeToChangelogFile="true" />
+    <include file="04-changeset-badges-table.xml" relativeToChangelogFile="true" />
+    <include file="07-changeset-bookmarks-table.xml" relativeToChangelogFile="true" />
+    <include file="10-changeset-chat-table.xml" relativeToChangelogFile="true" />
+    <include file="13-changeset-comment-table.xml" relativeToChangelogFile="true" />
+    <include file="16-changeset-comment_answer-table.xml" relativeToChangelogFile="true" />
+    <include file="19-changeset-comment_question-table.xml" relativeToChangelogFile="true" />
+    <include file="22-changeset-group_chat-table.xml" relativeToChangelogFile="true" />
+    <include file="25-changeset-groupchat_has_users-table.xml" relativeToChangelogFile="true" />
+    <include file="28-changeset-message-table.xml" relativeToChangelogFile="true" />
+    <include file="31-changeset-question-table.xml" relativeToChangelogFile="true" />
+    <include file="34-changeset-question_has_tag-table.xml" relativeToChangelogFile="true" />
+    <include file="37-changeset-question_viewed-table.xml" relativeToChangelogFile="true" />
+    <include file="40-changeset-related_tag-table.xml" relativeToChangelogFile="true" />
+    <include file="43-changeset-reputation-table.xml" relativeToChangelogFile="true" />
+    <include file="46-changeset-role-table.xml" relativeToChangelogFile="true" />
+    <include file="49-changeset-single_chat-table.xml" relativeToChangelogFile="true" />
+    <include file="52-changeset-tag-table.xml" relativeToChangelogFile="true" />
+    <include file="55-changeset-tag_ignore-table.xml" relativeToChangelogFile="true" />
+    <include file="58-changeset-tag_tracked-table.xml" relativeToChangelogFile="true" />
+    <include file="61-changeset-user_badges-table.xml" relativeToChangelogFile="true" />
+    <include file="64-changeset-user_entity-table.xml" relativeToChangelogFile="true" />
+    <include file="67-changeset-user_favorite_question-table.xml" relativeToChangelogFile="true" />
+    <include file="70-changeset-votes_on_answers-table.xml" relativeToChangelogFile="true" />
+    <include file="73-changeset-votes_on_questions-table.xml" relativeToChangelogFile="true" />
+
+    <include file="81-changeset-answer_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="82-changeset-answer_vote_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="83-changeset-badge_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="84-changeset-bookmarks_id_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="85-changeset-chat_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="86-changeset-comment_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="87-changeset-ignore_tag_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="88-changeset-message_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="89-changeset-question_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="90-changeset-question_viewed_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="91-changeset-related_tag_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="92-changeset-reputation_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="93-changeset-role_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="94-changeset-tag_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="95-changeset-tracked_tag_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="96-changeset-user_badges_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="97-changeset-user_favorite_question_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="98-changeset-user_seq-sequence.xml" relativeToChangelogFile="true" />
+    <include file="99-changeset-vote_question_seq-sequence.xml" relativeToChangelogFile="true" />
+
+
+
+
+</databaseChangeLog>

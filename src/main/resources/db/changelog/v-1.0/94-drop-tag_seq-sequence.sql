@@ -1,0 +1,2 @@
+DROP SEQUENCE IF EXISTS public.tag_seq;
+GO
